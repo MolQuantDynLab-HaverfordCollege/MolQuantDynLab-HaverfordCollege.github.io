@@ -1,6 +1,10 @@
 title:  MolQuantDyn@Haverford
 url: https://molquantdynlab-haverfordcollege.github.io
 
+# Default preview image used by jekyll-seo-tag when a page (or its own
+# front matter) doesn't set one, e.g. for link previews on Slack, etc.
+image: /img/logos/MQDLab-2.png
+
 exclude: [bibble, README.md, Makefile, screenshot.png]
 
 description:
