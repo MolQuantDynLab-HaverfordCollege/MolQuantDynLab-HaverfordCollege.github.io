@@ -4,16 +4,25 @@
         <!-- <title>{{ site.name }}: {{ page.title }}</title> -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" id="meta-theme-color" content="#ffffff">
 
         <!-- Apply a saved dark/light choice before first paint, to avoid a flash of the wrong theme. -->
         <script>
             (function () {
+                var theme = null;
                 try {
                     var stored = localStorage.getItem('theme');
                     if (stored === 'dark' || stored === 'light') {
+                        theme = stored;
                         document.documentElement.setAttribute('data-theme', stored);
                     }
                 } catch (e) {}
+
+                if (!theme) {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                var meta = document.getElementById('meta-theme-color');
+                if (meta) meta.setAttribute('content', theme === 'dark' ? '#121212' : '#ffffff');
             })();
         </script>
 
@@ -136,6 +145,8 @@
                 function updateButton(theme) {
                     btn.setAttribute('aria-pressed', theme === 'dark');
                     icon.className = 'fa fa-fw ' + (theme === 'dark' ? 'fa-sun-o' : 'fa-moon-o');
+                    var meta = document.getElementById('meta-theme-color');
+                    if (meta) meta.setAttribute('content', theme === 'dark' ? '#121212' : '#ffffff');
                 }
 
                 updateButton(currentTheme());
