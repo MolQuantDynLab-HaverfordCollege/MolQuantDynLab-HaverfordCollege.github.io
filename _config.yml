@@ -8,7 +8,7 @@ image: /img/logos/MQDLab-2.png
 exclude: [bibble, README.md, Makefile, screenshot.png]
 
 description:
-  The Molecular Quantum Dynamics Lab (MolQuantDyn Lab) at Haverford College, Department of Physics and Astronomy focuses on developing and using quantum dynamics methods to study processes relevant to atmopsheric chemistry, astrophysics, combustion and catalysis.
+  The Molecular Quantum Dynamics Lab (MolQuantDyn Lab) at Haverford College, Department of Physics and Astronomy focuses on developing and using quantum dynamics methods to study processes relevant to atmospheric chemistry, astrophysics, combustion and catalysis.
 
 # colorize code snippets with the pygments module
 highlighter: pygments
