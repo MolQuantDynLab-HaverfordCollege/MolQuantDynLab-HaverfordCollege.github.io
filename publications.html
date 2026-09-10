@@ -7,7 +7,65 @@ title: Publications
     <a href="{{ site.base }}/bib/steve-paper.bib">Download BibTeX.</a>
 </p>
 
+<div class="pub-filter">
+    <label for="pub-year-filter">Year</label>
+    <select id="pub-year-filter">
+        <option value="">All years</option>
+    </select>
+
+    <label for="pub-search">Search</label>
+    <input type="search" id="pub-search" placeholder="Title, author, venue…">
+</div>
+
+<p id="pub-no-results" class="pub-no-results" hidden>No publications match your filters.</p>
+
 {% include pubs.html %}
+
+<script>
+(function () {
+    var table = document.getElementById('pub-table');
+    if (!table) return;
+
+    var rows = Array.prototype.slice.call(table.querySelectorAll('tbody > tr'));
+    var yearSelect = document.getElementById('pub-year-filter');
+    var searchInput = document.getElementById('pub-search');
+    var noResults = document.getElementById('pub-no-results');
+
+    var years = [];
+    rows.forEach(function (row) {
+        var strong = row.querySelector('.date strong');
+        var year = strong ? strong.textContent.trim() : '';
+        row.setAttribute('data-year', year);
+        if (year && years.indexOf(year) === -1) years.push(year);
+    });
+    years.sort(function (a, b) { return b - a; });
+    years.forEach(function (year) {
+        var opt = document.createElement('option');
+        opt.value = year;
+        opt.textContent = year;
+        yearSelect.appendChild(opt);
+    });
+
+    function applyFilters() {
+        var year = yearSelect.value;
+        var query = searchInput.value.trim().toLowerCase();
+        var visibleCount = 0;
+
+        rows.forEach(function (row) {
+            var matchesYear = !year || row.getAttribute('data-year') === year;
+            var matchesQuery = !query || row.textContent.toLowerCase().indexOf(query) !== -1;
+            var show = matchesYear && matchesQuery;
+            row.hidden = !show;
+            if (show) visibleCount++;
+        });
+
+        noResults.hidden = visibleCount !== 0;
+    }
+
+    yearSelect.addEventListener('change', applyFilters);
+    searchInput.addEventListener('input', applyFilters);
+})();
+</script>
 
 <!-- <h2 style="padding-bottom:10pt;">Datasets</h2> -->
 

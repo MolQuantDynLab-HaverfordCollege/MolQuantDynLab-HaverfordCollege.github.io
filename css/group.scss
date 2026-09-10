@@ -108,6 +108,37 @@ ul.news {
     margin-bottom: 2.5rem;
 }
 
+/* Publications: year/text filter bar above the table. */
+.pub-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    margin-bottom: 16px;
+
+    label {
+        margin-bottom: 0;
+        font-weight: bold;
+        color: $gray;
+    }
+
+    select,
+    input[type="search"] {
+        padding: 4px 8px;
+        border: 1px solid $light-gray;
+        border-radius: 4px;
+    }
+
+    input[type="search"] {
+        flex: 1 1 220px;
+    }
+}
+
+.pub-no-results {
+    color: $gray;
+    font-style: italic;
+}
+
 /* Publications: small TOC/figure thumbnail beside the citation, where available. */
 .pub-figure {
     float: left;
