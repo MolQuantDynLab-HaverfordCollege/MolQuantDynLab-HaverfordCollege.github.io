@@ -29,7 +29,7 @@
     {% if post.image %}
 
         {% capture img %}
-            <img class="img-fluid d-block mx-auto"
+            <img class="img-fluid d-block mx-auto" loading="lazy"
                  style="{{ post.image_style }}"
                  src="{{ post.image }}"
                  alt="{{ post.title }}">
