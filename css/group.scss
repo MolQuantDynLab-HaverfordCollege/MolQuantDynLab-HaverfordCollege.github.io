@@ -78,6 +78,27 @@ a:hover {
     background: var(--light-gray);
 }
 
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--light-gray);
+    background: var(--card-bg);
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+.back-to-top:hover {
+    background: var(--light-gray);
+}
+
 /* Bootstrap components: repaint for dark mode via the variables above. */
 .jumbotron {
     background-color: var(--jumbotron-bg);
@@ -391,4 +412,31 @@ bottom: 70px;
 
 .float-ig {
 bottom: 10px;
+}
+
+/* Print: drop chrome that only makes sense on screen, and force a
+   plain light printout regardless of the active theme. */
+@media print {
+    .theme-toggle,
+    .back-to-top,
+    .nav-pills,
+    .pub-filter,
+    .pub-no-results,
+    .footer {
+        display: none !important;
+    }
+
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+
+    .pub-figure {
+        border-color: #ccc;
+    }
 }

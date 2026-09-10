@@ -122,6 +122,10 @@
 
         </div> <!-- /container -->
 
+        <button id="back-to-top" type="button" class="back-to-top" aria-label="Back to top" hidden>
+            <span class="fa fa-arrow-up" aria-hidden="true"></span>
+        </button>
+
         <!-- Support retina images. -->
         <script type="text/javascript"
                 src="{{ site.base }}/js/srcset-polyfill.js"></script>
@@ -156,6 +160,24 @@
                     document.documentElement.setAttribute('data-theme', next);
                     try { localStorage.setItem('theme', next); } catch (e) {}
                     updateButton(next);
+                });
+            })();
+        </script>
+
+        <script>
+            (function () {
+                var btn = document.getElementById('back-to-top');
+                if (!btn) return;
+
+                function toggleVisibility() {
+                    btn.hidden = window.scrollY < 400;
+                }
+
+                toggleVisibility();
+                window.addEventListener('scroll', toggleVisibility, { passive: true });
+
+                btn.addEventListener('click', function () {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             })();
         </script>
