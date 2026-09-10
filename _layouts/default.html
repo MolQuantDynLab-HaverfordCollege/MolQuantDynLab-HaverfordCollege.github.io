@@ -5,6 +5,18 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <!-- Apply a saved dark/light choice before first paint, to avoid a flash of the wrong theme. -->
+        <script>
+            (function () {
+                try {
+                    var stored = localStorage.getItem('theme');
+                    if (stored === 'dark' || stored === 'light') {
+                        document.documentElement.setAttribute('data-theme', stored);
+                    }
+                } catch (e) {}
+            })();
+        </script>
+
         <link rel="icon" href="{{ site.base }}/favicon.ico" sizes="any">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ site.base }}/img/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ site.base }}/img/favicon-16x16.png">
@@ -71,6 +83,11 @@
                     {% endfor %}
 
                 </ul>
+
+                <button id="theme-toggle" type="button" class="theme-toggle"
+                        aria-label="Toggle dark mode" aria-pressed="false">
+                    <span class="fa fa-fw fa-moon-o" aria-hidden="true"></span>
+                </button>
             </div>
 
             {% if page.image %}
@@ -99,5 +116,37 @@
         <!-- Support retina images. -->
         <script type="text/javascript"
                 src="{{ site.base }}/js/srcset-polyfill.js"></script>
+
+        <script>
+            (function () {
+                var btn = document.getElementById('theme-toggle');
+                if (!btn) return;
+
+                var icon = btn.querySelector('.fa');
+                var mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+                function storedTheme() {
+                    try { return localStorage.getItem('theme'); } catch (e) { return null; }
+                }
+
+                function currentTheme() {
+                    return storedTheme() || (mql.matches ? 'dark' : 'light');
+                }
+
+                function updateButton(theme) {
+                    btn.setAttribute('aria-pressed', theme === 'dark');
+                    icon.className = 'fa fa-fw ' + (theme === 'dark' ? 'fa-sun-o' : 'fa-moon-o');
+                }
+
+                updateButton(currentTheme());
+
+                btn.addEventListener('click', function () {
+                    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-theme', next);
+                    try { localStorage.setItem('theme', next); } catch (e) {}
+                    updateButton(next);
+                });
+            })();
+        </script>
     </body>
 </html>

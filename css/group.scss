@@ -1,16 +1,109 @@
 ---
 ---
 
-$gray: #999;
-$light-gray: #EEE;
+:root {
+    --bg: #fff;
+    --text: #212529;
+    --link: #8B0000;
+    --link-hover: #2C4C99;
+    --gray: #999;
+    --light-gray: #EEE;
+    --card-bg: #fff;
+    --card-footer-bg: rgba(0, 0, 0, 0.03);
+    --jumbotron-bg: #e9ecef;
+    --input-bg: #fff;
+    --logo-bg: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #121212;
+        --text: #e6e6e6;
+        --link: #ff6b6b;
+        --link-hover: #7aa2f7;
+        --gray: #aaa;
+        --light-gray: #3a3a3a;
+        --card-bg: #1e1e1e;
+        --card-footer-bg: rgba(255, 255, 255, 0.05);
+        --jumbotron-bg: #1e1e1e;
+        --input-bg: #1e1e1e;
+        --logo-bg: #fff;
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg: #121212;
+    --text: #e6e6e6;
+    --link: #ff6b6b;
+    --link-hover: #7aa2f7;
+    --gray: #aaa;
+    --light-gray: #3a3a3a;
+    --card-bg: #1e1e1e;
+    --card-footer-bg: rgba(255, 255, 255, 0.05);
+    --jumbotron-bg: #1e1e1e;
+    --input-bg: #1e1e1e;
+    --logo-bg: #fff;
+}
 
 /* Space out content a bit */
 body {
     padding-top: 20px;
+    background: var(--bg);
+    color: var(--text);
+}
+
+a {
+    color: var(--link);
+}
+a:hover {
+    color: var(--link-hover);
+}
+
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--light-gray);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-top: 6px;
+    padding: 0;
+    color: var(--gray);
+    cursor: pointer;
+}
+.theme-toggle:hover {
+    background: var(--light-gray);
+}
+
+/* Bootstrap components: repaint for dark mode via the variables above. */
+.jumbotron {
+    background-color: var(--jumbotron-bg);
+}
+.card {
+    background-color: var(--card-bg);
+    border-color: var(--light-gray);
+}
+.card-footer {
+    background-color: var(--card-footer-bg);
+    border-top-color: var(--light-gray);
+}
+.text-muted {
+    color: var(--gray) !important;
+}
+.table th,
+.table td {
+    border-top-color: var(--light-gray);
+}
+.table thead th,
+.table tbody + tbody {
+    border-color: var(--light-gray);
 }
 
 .header {
-    border-bottom: 1px solid $light-gray;
+    border-bottom: 1px solid var(--light-gray);
     padding-bottom: 10px;
     margin-bottom: 20px;
     text-align: center;
@@ -18,8 +111,8 @@ body {
 
 .footer {
     /* padding-top: 19px; */
-    color: $gray;
-    border-top: 1px solid $light-gray;
+    color: var(--gray);
+    border-top: 1px solid var(--light-gray);
     text-align: center;
     font-size: 0.8em;
     padding-left: 20%;
@@ -28,7 +121,7 @@ body {
     padding-bottom: 20px;
 
     a:link, a:visited {
-        color: $gray;
+        color: var(--gray);
     }
 }
 
@@ -40,7 +133,7 @@ body {
 }
 
 .fa {
-    color: $gray;
+    color: var(--gray);
 }
 a > .fa {
     display: inline;
@@ -64,10 +157,13 @@ a > .fa {
 /* Group logo */
 #logo {
     //width: 290px;
-    height: 50px; 
+    height: 50px;
     // width: 154px;
     // height: 35px;
     margin: 2px 0 8px 0;
+    background: var(--logo-bg);
+    border-radius: 6px;
+    padding: 4px;
 }
 
 .affiliation {
@@ -75,6 +171,10 @@ a > .fa {
     height: auto;
     margin-top: 0px;
     margin-bottom: 15px;
+    background: var(--logo-bg);
+    border-radius: 6px;
+    padding: 4px;
+    box-sizing: border-box;
 }
 
 @media only screen and (max-device-width: 600px) {
@@ -87,7 +187,7 @@ a > .fa {
 ul.news {
 
     .date {
-        color: $gray;
+        color: var(--gray);
         font-weight: bold;
     }
 
@@ -119,14 +219,16 @@ ul.news {
     label {
         margin-bottom: 0;
         font-weight: bold;
-        color: $gray;
+        color: var(--gray);
     }
 
     select,
     input[type="search"] {
         padding: 4px 8px;
-        border: 1px solid $light-gray;
+        border: 1px solid var(--light-gray);
         border-radius: 4px;
+        background-color: var(--input-bg);
+        color: var(--text);
     }
 
     input[type="search"] {
@@ -135,8 +237,15 @@ ul.news {
 }
 
 .pub-no-results {
-    color: $gray;
+    color: var(--gray);
     font-style: italic;
+}
+
+/* Publications: the small PDF icon is a dark glyph on a transparent
+   background, so give it a chip to stay visible in dark mode. */
+.pubtitle img {
+    background: var(--logo-bg);
+    border-radius: 2px;
 }
 
 /* Publications: small TOC/figure thumbnail beside the citation, where available. */
@@ -147,7 +256,7 @@ ul.news {
     object-fit: cover;
     margin: 0 12px 8px 0;
     border-radius: 4px;
-    border: 1px solid $light-gray;
+    border: 1px solid var(--light-gray);
 }
 
 @media (min-width: 768px) {
@@ -170,7 +279,7 @@ section {
 
 .noprofile {
     circle {
-        fill: $light-gray;
+        fill: var(--light-gray);
     }
     text {
         font-weight: 700;
@@ -200,11 +309,11 @@ section {
     }
 
     .bio {
-        color: $gray;
+        color: var(--gray);
     }
 
     .affiliation {
-        color: $gray;
+        color: var(--gray);
     }
 
     .person-name {
