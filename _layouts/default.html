@@ -50,6 +50,8 @@
         <script data-goatcounter="https://molquantdyn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     </head>
     <body>
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
         <div class="float-sm">
 <!--            <div class="fl-fl float-ig" onclick="">
                 <i class="fa fa-instagram" style="font-size: 20px; color: #ffffff; padding: 10px 0; width: 40px; margin-left: 8px;"></i>
@@ -100,18 +102,20 @@
                 </button>
             </div>
 
-            {% if page.image %}
-                <img src="{{ page.image }}"
-                     alt="{{ page.title }}"
-                     style="max-width: 400px"
-                     class="img-fluid mx-auto d-block mb-4"/>
-            {% endif %}
+            <main id="main-content">
+                {% if page.image %}
+                    <img src="{{ page.image }}"
+                         alt="{{ page.title }}"
+                         style="max-width: 400px"
+                         class="img-fluid mx-auto d-block mb-4"/>
+                {% endif %}
 
-            {% if page.notitle != true %}
-                <h1>{{ page.title }}</h1>
-            {% endif %}
+                {% if page.notitle != true %}
+                    <h1>{{ page.title }}</h1>
+                {% endif %}
 
-            {{ content }}
+                {{ content }}
+            </main>
 
             <div class="footer">
                 <img src="{{ site.base }}/img/logos/haverford-college.png" class="affiliation" alt="Haverford College">
