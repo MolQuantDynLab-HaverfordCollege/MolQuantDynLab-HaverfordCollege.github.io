@@ -1,0 +1,28 @@
+---
+layout: default
+title: Join Us
+---
+
+<p>
+    The MolQuantDyn Lab is an active and growing group, and we are always happy to hear from motivated students interested in computational chemical physics, quantum dynamics and molecular spectroscopy.
+</p>
+
+<p>
+    <strong>Haverford undergraduates</strong> interested in a research project, a senior thesis, or a summer research position are encouraged to reach out directly by email with a short description of your background and interests. No prior programming or quantum mechanics experience is required — willingness to learn is what matters most.
+</p>
+
+<p>
+    Prospective graduate students, postdocs, and external collaborators interested in our research are also welcome to get in touch.
+</p>
+
+<p>
+    See our <a href="{{ site.base }}/contact.html">Contact page</a> to reach out.
+</p>
+
+<ul class="news list-unstyled">
+    {% for post in site.posts %}
+        {% if post.type == "call-for-participants" %}
+            {% include call-for-participants-item.html item=post %}
+        {% endif %}
+    {% endfor %}
+</ul>
