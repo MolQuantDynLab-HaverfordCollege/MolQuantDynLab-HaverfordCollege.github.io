@@ -12,7 +12,6 @@ steve-ndengue:
 
 ellie-park:
     display_name: "Ellie Park"
-    webpage: "/people/ellie_park.html"
     role: senior-thesis
     image: /img/people/haverford_squirrel.jpeg
     bio: September 2024 - Present
@@ -20,7 +19,6 @@ ellie-park:
 
 heshu-yin:
     display_name: "Heshu Yin"
-    webpage: "/people/heshu_yin.html"
     role: senior-thesis
     image: /img/people/heshu-yin.jpg
     bio: January 2026 - Present
@@ -28,7 +26,6 @@ heshu-yin:
 
 zaid-sbaiti:
     display_name: "Zaid Sbaiti"
-    webpage: "/people/zaid_sbaiti.html"
     role: student-researcher
     image: /img/people/zaid-sbaiti.jpg
     bio: June 2025 - Present
@@ -36,7 +33,6 @@ zaid-sbaiti:
 
 lann-wallace:
     display_name: "Lann Wallace"
-    webpage: "/people/lann_wallace.html"
     role: student-researcher
     image: /img/people/haverford_squirrel.jpeg
     bio: January 2026 - Present
@@ -44,7 +40,6 @@ lann-wallace:
 
 yijin-yuan:
     display_name: "Yijin Yuan"
-    webpage: "/people/yijin_yuan.html"
     role: student-researcher
     image: /img/people/haverford_squirrel.jpeg
     bio: January 2026 - Present
@@ -52,7 +47,6 @@ yijin-yuan:
 
 conrad-seib-levinson:
     display_name: "Conrad Seib-Levinson"
-    webpage: "/people/conrad_seib-levinson.html"
     role: student-researcher
     image: /img/people/conrad-seib-levinson.jpg
     bio: January 2026 - Present
@@ -60,7 +54,6 @@ conrad-seib-levinson:
 
 ivan-paiewonsky:
     display_name: "Ivan Paiewonsky"
-    webpage: "/people/ivan_paiewonsky.html"
     role: student-researcher
     image: /img/people/ivan-paiewonsky.jpg
     bio: January 2026 - Present
@@ -117,7 +110,6 @@ jeanpaul-nshuti:
 
 micah-lachman:
     display_name: "Micah Lachman"
-    webpage: "/people/micah_lachman.html"
     role: alum
     image: /img/people/haverford_squirrel.jpeg
     bio: Senior Thesis Student
@@ -126,7 +118,6 @@ micah-lachman:
 
 owen-gill:
     display_name: "Owen Gill"
-    webpage: "/people/owen_gill.html"
     role: alum
     image: /img/people/haverford_squirrel.jpeg
     bio: Senior Thesis Student
